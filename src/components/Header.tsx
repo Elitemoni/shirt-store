@@ -1,9 +1,10 @@
 import React from 'react'
 //import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
    return (
-      <div className="flex justify-center items-center bg-gray-800 text-black font-bold black-white h-16">
+      <div className="flex justify-center items-center bg-gray-800 text-black font-bold h-16">
          {/* <Image
             src="public/shirt_logo.jpeg"
             alt="Logo"
@@ -11,8 +12,12 @@ export default function Header() {
             height={100}
             className="absolute top-0 left-0 z-10"  
          /> */}
-         <button className="flex-2 bg-blue-500 h-full">Store</button>
-         <button className="flex-1 bg-amber-300 h-full">Cart</button>
+         <button className="flex-2 bg-blue-500 h-full">
+            <Link href="/store">Store</Link>
+         </button>
+         <button className="flex-1 bg-amber-300 h-full">
+            <Link href="/create">Cart</Link>
+         </button>
          <button className="flex-1 bg-white h-full">Sign-In</button>
       </div>
    )
