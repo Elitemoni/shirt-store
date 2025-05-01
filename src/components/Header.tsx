@@ -1,23 +1,23 @@
 import React from 'react'
-//import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Header() {
    return (
       <div className="flex justify-center items-center bg-gray-800 text-black font-bold h-16">
-         {/* <Image
-            src="public/shirt_logo.jpeg"
+         <Image
+            src="/public/shirt_logo.jpeg"
             alt="Logo"
-            width={100}
-            height={100}
-            className="absolute top-0 left-0 z-10"  
-         /> */}
-         <button className="flex-2 bg-blue-500 h-full">
-            <Link href="/store">Store</Link>
-         </button>
-         <button className="flex-1 bg-amber-300 h-full">
-            <Link href="/create">Cart</Link>
-         </button>
+            width={1}
+            height={1}
+            className="flex-1 h-full rounded-lg shadow-lg"  
+         />
+         <Link href="/store" className="flex-3 flex items-center justify-center bg-blue-500 h-full">
+            Store
+         </Link>
+         <Link href="/create" className="flex-2 flex items-center justify-center h-full bg-amber-300">
+            Create
+         </Link>
          <button className="flex-1 bg-white h-full">Sign-In</button>
       </div>
    )
