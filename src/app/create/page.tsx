@@ -17,7 +17,7 @@ export default function page() {
             {/* shirt */}
             <div>name</div>
             <Image
-               src="/public/shirt_logo.jpeg"
+               src="/public/image/shirt_logo.jpeg"
                alt="Logo"
                width={1}
                height={1}

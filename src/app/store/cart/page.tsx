@@ -15,7 +15,7 @@ export default function page() {
             {/* items */}
             <div>map over list</div>
             <div className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
-               <Image src="/public/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
+               <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
                <div className="flex flex-col">
                   <h2 className="text-lg font-bold mb-2">Item Name</h2>
                   <p className="text-gray-700 mb-2">$20.00</p>

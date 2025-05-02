@@ -40,7 +40,7 @@ export default function page() {
          <div className="flex-1 flex flex-col items-center justify-center bg-gray-200 p-4 rounded-lg shadow-lg space-y-2">
             <div>name</div>
             <Image
-               src="/public/shirt_logo.jpeg"
+               src="/public/image/shirt_logo.jpeg"
                alt="Logo"
                width={1}
                height={1}

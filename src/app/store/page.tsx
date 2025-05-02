@@ -1,8 +1,46 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { useState, useEffect } from 'react';
+
+type Person = {
+   name: string
+   age: number
+   email: string
+}
+
+type Shirt = {
+   id: number
+   account_id: number
+   uploaded: boolean
+   name: string
+   design_url: string
+   style_type: string
+   shirt_type: string
+   price: number
+}
+
 export default function page() {
+   const [data, setData] = useState<Shirt[]>([]);
+   const [loading, setLoading] = useState(true);
+
+   useEffect(() => {
+      const fetchData = async () => {
+         const response = await fetch('/api/read-csv');
+         const result = await response.json();
+         setData(result);
+         setLoading(false);
+      };
+      fetchData();
+   }, []);
+
+   if (loading) {
+      return <div>Loading...</div>;
+   }
+
    return (
       <div className="flex items-center justify-center h-screen bg-gray-300 text-black font-bold w-full">
 
@@ -31,9 +69,20 @@ export default function page() {
             </div>
 
             {/* Items */}
-            <div>Map over the csv list</div>
+            {data.map((shirt, index) => (
+               <div key={index} className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
+                  <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
+                  <div className="flex flex-col">
+                     <h2 className="text-lg font-bold mb-2">{shirt.name}</h2>
+                     <p className="text-gray-700 mb-2">$20.00</p>
+                     <p className="text-gray-700 mb-2">By William</p>
+                  </div>
+                  <div className="text-4xl">😉</div>
+                  <button className="bg-green-400 hover:bg-green-600 hover:cursor-pointer text-4xl w-16 h-16 rounded-4xl">+</button>
+               </div>
+            ))}
             <div className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
-               <Image src="/public/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
+               <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
                <div className="flex flex-col">
                   <h2 className="text-lg font-bold mb-2">Item Name</h2>
                   <p className="text-gray-700 mb-2">$20.00</p>
