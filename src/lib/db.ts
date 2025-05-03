@@ -1,5 +1,7 @@
 // this creates only one instance of PrismaClient in the whole app
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@/generated/prisma/client'
+
+console.log('Prisma Client Initializing...')
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient }
 

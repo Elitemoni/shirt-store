@@ -1,16 +1,14 @@
-"use client"
+"use server"
 
 import React from 'react'
+//import { useState, useEffect } from 'react';
+
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { useState, useEffect } from 'react';
+import { prisma } from '@/lib/db'
+import { addToCart } from '@/actions/actions'
 
-type Person = {
-   name: string
-   age: number
-   email: string
-}
 
 type Shirt = {
    id: number
@@ -23,22 +21,20 @@ type Shirt = {
    price: number
 }
 
-export default function page() {
-   const [data, setData] = useState<Shirt[]>([]);
-   const [loading, setLoading] = useState(true);
+export default async function page() {
+   //const [data, setData] = useState<Shirt[]>([]);
+   const data = await prisma.shirt.findMany({
+      where: {
+         uploaded: true,
+      },
+      orderBy: {
+         id: 'desc',
+      },
+   })
 
-   useEffect(() => {
-      const fetchData = async () => {
-         const response = await fetch('/api/read-csv');
-         const result = await response.json();
-         setData(result);
-         setLoading(false);
-      };
-      fetchData();
-   }, []);
-
-   if (loading) {
-      return <div>Loading...</div>;
+   const handleAddToCart = async (shirtId: number) => {
+      // Call the addToCart action with the shirt ID
+      await addToCart(shirtId)
    }
 
    return (
@@ -69,7 +65,7 @@ export default function page() {
             </div>
 
             {/* Items */}
-            {data.map((shirt, index) => (
+            {data.map((shirt : any, index : any) => (
                <div key={index} className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
                   <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
                   <div className="flex flex-col">
@@ -78,20 +74,9 @@ export default function page() {
                      <p className="text-gray-700 mb-2">By William</p>
                   </div>
                   <div className="text-4xl">😉</div>
-                  <button className="bg-green-400 hover:bg-green-600 hover:cursor-pointer text-4xl w-16 h-16 rounded-4xl">+</button>
+                  <button onClick={() => handleAddToCart(shirt.id)} className="bg-green-400 hover:bg-green-600 hover:cursor-pointer text-4xl w-16 h-16 rounded-4xl">+</button>
                </div>
             ))}
-            <div className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
-               <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
-               <div className="flex flex-col">
-                  <h2 className="text-lg font-bold mb-2">Item Name</h2>
-                  <p className="text-gray-700 mb-2">$20.00</p>
-                  <p className="text-gray-700 mb-2">By William</p>
-               </div>
-               <div className="text-4xl">😉</div>
-               <button className="bg-green-400 hover:bg-green-600 hover:cursor-pointer text-4xl w-16 h-16 rounded-4xl">+</button>
-            </div>
-            
          </div>
       </div>
    )
