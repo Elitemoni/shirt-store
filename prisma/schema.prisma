@@ -29,7 +29,7 @@ model Shirt {
 model Cart {
   id         Int      @id @default(autoincrement())
   account_id String
-  item_id    Int
+  item_id    Int      @unique
   quantity   Int
   price      Int
   createdAt  DateTime @default(now())
@@ -41,7 +41,7 @@ model Cart {
 model Order {
   id         Int      @id @default(autoincrement())
   account_id String
-  item_id    Int
+  item_id    Int      @unique
   status     String
   location   String
   quantity   Int

@@ -4771,17 +4771,17 @@ export namespace Prisma {
 
   export type CartWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    item_id?: number
     AND?: CartWhereInput | CartWhereInput[]
     OR?: CartWhereInput[]
     NOT?: CartWhereInput | CartWhereInput[]
     account_id?: StringFilter<"Cart"> | string
-    item_id?: IntFilter<"Cart"> | number
     quantity?: IntFilter<"Cart"> | number
     price?: IntFilter<"Cart"> | number
     createdAt?: DateTimeFilter<"Cart"> | Date | string
     updatedAt?: DateTimeFilter<"Cart"> | Date | string
     shirt?: XOR<ShirtScalarRelationFilter, ShirtWhereInput>
-  }, "id">
+  }, "id" | "item_id">
 
   export type CartOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4840,18 +4840,18 @@ export namespace Prisma {
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    item_id?: number
     AND?: OrderWhereInput | OrderWhereInput[]
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
     account_id?: StringFilter<"Order"> | string
-    item_id?: IntFilter<"Order"> | number
     status?: StringFilter<"Order"> | string
     location?: StringFilter<"Order"> | string
     quantity?: IntFilter<"Order"> | number
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
     shirt?: XOR<ShirtScalarRelationFilter, ShirtWhereInput>
-  }, "id">
+  }, "id" | "item_id">
 
   export type OrderOrderByWithAggregationInput = {
     id?: SortOrder

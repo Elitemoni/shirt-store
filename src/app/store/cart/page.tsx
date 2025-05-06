@@ -2,7 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function page() {
+import CartItems from '@/components/CartItems'
+import { getCartItems } from '@/actions/actions'
+
+export default async function page() {
+   const cartItems = await getCartItems()
+
    return (
       <div className="flex items-center justify-center h-screen text-black font-bold w-full bg-gray-300">
 
@@ -12,19 +17,7 @@ export default function page() {
             {/* cart logo */}
             <div className="mt-4 text-8xl">🛒</div>
 
-            {/* items */}
-            <div>map over list</div>
-            <div className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
-               <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
-               <div className="flex flex-col">
-                  <h2 className="text-lg font-bold mb-2">Item Name</h2>
-                  <p className="text-gray-700 mb-2">$20.00</p>
-                  <p className="text-gray-700 mb-2">By William</p>
-               </div>
-               <div className="text-4xl">😉</div>
-               <button className="bg-amber-300 hover:bg-amber-400 hover:cursor-pointer text-2xl p-4 rounded-4xl">Follow</button>
-               <button className="bg-red-400 hover:bg-red-600 hover:cursor-pointer text-2xl w-16 h-16 rounded-2xl">X</button>
-            </div>
+            <CartItems cart={cartItems} />
 
             {/* return to shopping */}
             <button className="bg-blue-400 hover:bg-blue-600 hover:cursor-pointer p-4 rounded-2xl">
