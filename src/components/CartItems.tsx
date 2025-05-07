@@ -15,6 +15,7 @@ export default function CartItems({ cart } : any) {
    return (
       <div>
          {/* items */}
+         {/* currently shows from all accounts, needs to be related to specific account */}
          {cart.map((item : any, index : any) => (
             <div key={index} className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
                <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />

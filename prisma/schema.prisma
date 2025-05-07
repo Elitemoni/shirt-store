@@ -20,6 +20,7 @@ model Shirt {
   style_type String
   shirt_type String
   price      Int
+  price_id   String   @default("")
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   Order      Order[]

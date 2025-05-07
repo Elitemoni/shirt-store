@@ -3,9 +3,9 @@
 import { prisma } from '@/lib/db'
 import { revalidatePath } from 'next/cache'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import Stripe from "stripe"
 import { redirect } from 'next/navigation'
 import { checkAuthentication } from '@/lib/server-utils'
+import Stripe from 'stripe'
 
 export async function getShirts() {
    const shirts = await prisma.shirt.findMany({
@@ -120,3 +120,4 @@ export async function subtractFromCart(itemId: number) {
 
    revalidatePath('/store/cart')
 }
+

@@ -126,6 +126,7 @@ exports.Prisma.ShirtScalarFieldEnum = {
   style_type: 'style_type',
   shirt_type: 'shirt_type',
   price: 'price',
+  price_id: 'price_id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

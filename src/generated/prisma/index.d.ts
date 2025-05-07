@@ -1121,6 +1121,7 @@ export namespace Prisma {
     style_type: string | null
     shirt_type: string | null
     price: number | null
+    price_id: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1134,6 +1135,7 @@ export namespace Prisma {
     style_type: string | null
     shirt_type: string | null
     price: number | null
+    price_id: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1147,6 +1149,7 @@ export namespace Prisma {
     style_type: number
     shirt_type: number
     price: number
+    price_id: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1172,6 +1175,7 @@ export namespace Prisma {
     style_type?: true
     shirt_type?: true
     price?: true
+    price_id?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1185,6 +1189,7 @@ export namespace Prisma {
     style_type?: true
     shirt_type?: true
     price?: true
+    price_id?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1198,6 +1203,7 @@ export namespace Prisma {
     style_type?: true
     shirt_type?: true
     price?: true
+    price_id?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1298,6 +1304,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id: string
     createdAt: Date
     updatedAt: Date
     _count: ShirtCountAggregateOutputType | null
@@ -1330,6 +1337,7 @@ export namespace Prisma {
     style_type?: boolean
     shirt_type?: boolean
     price?: boolean
+    price_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     Order?: boolean | Shirt$OrderArgs<ExtArgs>
@@ -1346,6 +1354,7 @@ export namespace Prisma {
     style_type?: boolean
     shirt_type?: boolean
     price?: boolean
+    price_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["shirt"]>
@@ -1359,6 +1368,7 @@ export namespace Prisma {
     style_type?: boolean
     shirt_type?: boolean
     price?: boolean
+    price_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["shirt"]>
@@ -1372,11 +1382,12 @@ export namespace Prisma {
     style_type?: boolean
     shirt_type?: boolean
     price?: boolean
+    price_id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ShirtOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "account_id" | "uploaded" | "name" | "design_url" | "style_type" | "shirt_type" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["shirt"]>
+  export type ShirtOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "account_id" | "uploaded" | "name" | "design_url" | "style_type" | "shirt_type" | "price" | "price_id" | "createdAt" | "updatedAt", ExtArgs["result"]["shirt"]>
   export type ShirtInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Order?: boolean | Shirt$OrderArgs<ExtArgs>
     Cart?: boolean | Shirt$CartArgs<ExtArgs>
@@ -1400,6 +1411,7 @@ export namespace Prisma {
       style_type: string
       shirt_type: string
       price: number
+      price_id: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["shirt"]>
@@ -1835,6 +1847,7 @@ export namespace Prisma {
     readonly style_type: FieldRef<"Shirt", 'String'>
     readonly shirt_type: FieldRef<"Shirt", 'String'>
     readonly price: FieldRef<"Shirt", 'Int'>
+    readonly price_id: FieldRef<"Shirt", 'String'>
     readonly createdAt: FieldRef<"Shirt", 'DateTime'>
     readonly updatedAt: FieldRef<"Shirt", 'DateTime'>
   }
@@ -4574,6 +4587,7 @@ export namespace Prisma {
     style_type: 'style_type',
     shirt_type: 'shirt_type',
     price: 'price',
+    price_id: 'price_id',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4671,6 +4685,7 @@ export namespace Prisma {
     style_type?: StringFilter<"Shirt"> | string
     shirt_type?: StringFilter<"Shirt"> | string
     price?: IntFilter<"Shirt"> | number
+    price_id?: StringFilter<"Shirt"> | string
     createdAt?: DateTimeFilter<"Shirt"> | Date | string
     updatedAt?: DateTimeFilter<"Shirt"> | Date | string
     Order?: OrderListRelationFilter
@@ -4686,6 +4701,7 @@ export namespace Prisma {
     style_type?: SortOrder
     shirt_type?: SortOrder
     price?: SortOrder
+    price_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     Order?: OrderOrderByRelationAggregateInput
@@ -4704,6 +4720,7 @@ export namespace Prisma {
     style_type?: StringFilter<"Shirt"> | string
     shirt_type?: StringFilter<"Shirt"> | string
     price?: IntFilter<"Shirt"> | number
+    price_id?: StringFilter<"Shirt"> | string
     createdAt?: DateTimeFilter<"Shirt"> | Date | string
     updatedAt?: DateTimeFilter<"Shirt"> | Date | string
     Order?: OrderListRelationFilter
@@ -4719,6 +4736,7 @@ export namespace Prisma {
     style_type?: SortOrder
     shirt_type?: SortOrder
     price?: SortOrder
+    price_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ShirtCountOrderByAggregateInput
@@ -4740,6 +4758,7 @@ export namespace Prisma {
     style_type?: StringWithAggregatesFilter<"Shirt"> | string
     shirt_type?: StringWithAggregatesFilter<"Shirt"> | string
     price?: IntWithAggregatesFilter<"Shirt"> | number
+    price_id?: StringWithAggregatesFilter<"Shirt"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Shirt"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Shirt"> | Date | string
   }
@@ -4891,6 +4910,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Order?: OrderCreateNestedManyWithoutShirtInput
@@ -4906,6 +4926,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Order?: OrderUncheckedCreateNestedManyWithoutShirtInput
@@ -4920,6 +4941,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Order?: OrderUpdateManyWithoutShirtNestedInput
@@ -4935,6 +4957,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Order?: OrderUncheckedUpdateManyWithoutShirtNestedInput
@@ -4950,6 +4973,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4962,6 +4986,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4975,6 +5000,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5188,6 +5214,7 @@ export namespace Prisma {
     style_type?: SortOrder
     shirt_type?: SortOrder
     price?: SortOrder
+    price_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5206,6 +5233,7 @@ export namespace Prisma {
     style_type?: SortOrder
     shirt_type?: SortOrder
     price?: SortOrder
+    price_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5219,6 +5247,7 @@ export namespace Prisma {
     style_type?: SortOrder
     shirt_type?: SortOrder
     price?: SortOrder
+    price_id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5737,6 +5766,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Order?: OrderCreateNestedManyWithoutShirtInput
@@ -5751,6 +5781,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Order?: OrderUncheckedCreateNestedManyWithoutShirtInput
@@ -5780,6 +5811,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Order?: OrderUpdateManyWithoutShirtNestedInput
@@ -5794,6 +5826,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Order?: OrderUncheckedUpdateManyWithoutShirtNestedInput
@@ -5807,6 +5840,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Cart?: CartCreateNestedManyWithoutShirtInput
@@ -5821,6 +5855,7 @@ export namespace Prisma {
     style_type: string
     shirt_type: string
     price: number
+    price_id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     Cart?: CartUncheckedCreateNestedManyWithoutShirtInput
@@ -5850,6 +5885,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Cart?: CartUpdateManyWithoutShirtNestedInput
@@ -5864,6 +5900,7 @@ export namespace Prisma {
     style_type?: StringFieldUpdateOperationsInput | string
     shirt_type?: StringFieldUpdateOperationsInput | string
     price?: IntFieldUpdateOperationsInput | number
+    price_id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Cart?: CartUncheckedUpdateManyWithoutShirtNestedInput

@@ -3,10 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import CartItems from '@/components/CartItems'
+import Buy from '@/components/Buy'
+
 import { getCartItems } from '@/actions/actions'
 
 export default async function page() {
    const cartItems = await getCartItems()
+   console.log('cart items: ', cartItems)
 
    return (
       <div className="flex items-center justify-center h-screen text-black font-bold w-full bg-gray-300">
@@ -39,7 +42,9 @@ export default async function page() {
             </select>
 
             {/* buy */}
-            <div className="bg-green-400 hover:bg-green-600 hover:cursor-pointer text-2xl p-4 w-full text-center rounded-2xl">Buy</div>
+            <div className="bg-green-400 hover:bg-green-600 hover:cursor-pointer text-2xl p-4 w-full text-center rounded-2xl">
+               <Buy />
+            </div>
          </div>
       </div>
    )
