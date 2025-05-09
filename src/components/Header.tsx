@@ -22,21 +22,30 @@ export default async function Header() {
 
    return (
       <div className="flex justify-center items-center bg-gray-800 text-black font-bold h-16">
-         <Image
-            src="/public/shirt_logo.jpeg"
-            alt="Logo"
-            width={1}
-            height={1}
-            className="flex-1 h-full rounded-lg shadow-lg"  
-         />
+
+         {/* Logo, Home Navigation */}
+         <Link href="/" className="bg-gray-800 hover:bg-gray-600 hover:cursor-pointer flex items-center justify-center h-full">
+            <Image
+               src="https://ik.imagekit.io/ZephyrShard/shirt-store/shirt_logo.jpeg?updatedAt=1746660462234"
+               alt="Logo"
+               width={64}
+               height={64}
+               className="h-full hover:opacity-80 transition-opacity duration-100 ease-in-out"  
+            />
+         </Link>
+
+         {/* Store Navigation */}
          <Link href="/store" className="bg-blue-400 hover:bg-blue-600 hover:cursor-pointer flex-6 flex items-center justify-center h-full">
             Store
          </Link>
+
+         {/* Create Navigation */}
          <Link href="/create" className="bg-amber-300 hover:bg-amber-500 hover:cursor-pointer flex-4 flex items-center justify-center h-full">
             Create
          </Link>
-         {
-            isLoggedIn && user ? (
+
+         {/* Login/Register or Logout Navigation */}
+         {isLoggedIn && user ? (
             <>
                <div className="text-white p-4">{user.email}</div>
                <LogoutLink className="bg-white hover:bg-gray-300 hover:cursor-pointer flex-1 flex items-center justify-center h-full">Logout</LogoutLink>
@@ -46,8 +55,7 @@ export default async function Header() {
                <LoginLink className="bg-white hover:bg-gray-300 hover:cursor-pointer flex-1 flex items-center justify-center h-full">Login</LoginLink>
                <RegisterLink className="bg-white hover:bg-gray-300 hover:cursor-pointer flex-1 flex items-center justify-center h-full">Register</RegisterLink>
             </>
-            )
-         }
+         )}
          
       </div>
    )

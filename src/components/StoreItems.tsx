@@ -37,7 +37,10 @@ export default function StoreItems({ data } : any) {
          {data.map((shirt : any, index : any) => (
             data.length > 0 && shirt.name.toLowerCase().includes(searchName.toLowerCase()) && (
             <div key={index} className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
-               <Image src="/public/image/shirt_logo.jpeg" alt="Shirt Logo" width={100} height={100} className="rounded-lg shadow-lg mb-4" />
+               {shirt.design_url === "" ? 
+                  <div>No Image Available</div> : 
+                  <Image src={shirt.design_url} alt="Shirt Logo" width={256} height={256} className="rounded-lg shadow-lg mb-4" />
+               }
                <div className="flex flex-col">
                   <h2 className="text-lg font-bold mb-2">{shirt.name}</h2>
                   <p className="text-gray-700 mb-2">{shirt.price}</p>

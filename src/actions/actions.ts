@@ -7,6 +7,10 @@ import { redirect } from 'next/navigation'
 import { checkAuthentication } from '@/lib/server-utils'
 import Stripe from 'stripe'
 
+import FormData from 'form-data';
+import fetch from 'node-fetch';
+import { Buffer } from 'buffer';
+
 export async function getShirts() {
    const shirts = await prisma.shirt.findMany({
       where: {
@@ -39,6 +43,61 @@ export async function getCartItems() {
    })
 
    return cartItems
+}
+
+/*
+TODO:
+I have to create the image on imagekit
+I have to push the product onto stripe and get it's price_id
+*/
+/*
+{ 
+   name: string, 
+   design_url: string, 
+   price: number, 
+   style_type: string, 
+   shirt_type: string,
+}
+*/
+export async function uploadShirt(formData : FormData) {
+   const { isAuthenticated, getUser } = getKindeServerSession()
+   const isLoggedIn = await isAuthenticated()
+   const user = await getUser()
+   
+   if (!user) {
+      redirect('/login')
+   }
+
+   const userId = user.id
+
+   // Check if the user is authenticated
+   if (!isLoggedIn) {
+      throw new Error('User not authenticated')
+   }
+
+   const data = {
+      name: formData.get("name") as string,
+      //design_url: formData.get("design_url") as string,
+      price: parseInt(formData.get("price") as string),
+      style_type: formData.get("style_type") as string,
+      shirt_type: formData.get("shirt_type") as string,
+   }
+   
+   console.log("form data:\n", formData)
+
+   const shirt = await prisma.shirt.create({
+      data: {
+         account_id: userId,
+         uploaded: true,
+         name: data.name,
+         design_url: "",
+         style_type: data.style_type,
+         shirt_type: data.shirt_type,
+         price: data.price,
+      }
+   })
+   
+   return shirt
 }
 
 export async function addToCart(itemId: number) {
