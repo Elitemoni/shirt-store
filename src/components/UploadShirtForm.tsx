@@ -209,6 +209,7 @@ export default function UploadShirtForm() {
             className="p-2 w-full rounded-lg shadow-lg"
          />
 
+         {/* submit */}
          <button type="submit" disabled={!imageKitUrl} className="bg-amber-300 hover:bg-amber-500 hover:cursor-pointer p-4 w-32 text-center rounded-4xl">
             Submit to Store
          </button>
