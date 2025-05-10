@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation'
 import { checkAuthentication } from '@/lib/server-utils'
 import Stripe from 'stripe'
 
-import FormData from 'form-data';
+//import FormData from 'form-data';
 import fetch from 'node-fetch';
 import { Buffer } from 'buffer';
 
@@ -47,7 +47,6 @@ export async function getCartItems() {
 
 /*
 TODO:
-I have to create the image on imagekit
 I have to push the product onto stripe and get it's price_id
 */
 /*
@@ -59,7 +58,8 @@ I have to push the product onto stripe and get it's price_id
    shirt_type: string,
 }
 */
-export async function uploadShirt(formData : FormData) {
+export async function uploadShirt(formData: FormData, priceId: string) {
+   console.log(">> Inside uploadShirt: \n", formData, "\n", priceId)
    const { isAuthenticated, getUser } = getKindeServerSession()
    const isLoggedIn = await isAuthenticated()
    const user = await getUser()
@@ -76,11 +76,12 @@ export async function uploadShirt(formData : FormData) {
    }
 
    const data = {
-      name: formData.get("name") as string,
-      //design_url: formData.get("design_url") as string,
+      name: formData.get('name') as string,
+      design_url: formData.get("design_url") as string,
       price: parseInt(formData.get("price") as string),
       style_type: formData.get("style_type") as string,
       shirt_type: formData.get("shirt_type") as string,
+      price_id: priceId,
    }
    
    console.log("form data:\n", formData)
@@ -90,10 +91,11 @@ export async function uploadShirt(formData : FormData) {
          account_id: userId,
          uploaded: true,
          name: data.name,
-         design_url: "",
+         design_url: data.design_url,
          style_type: data.style_type,
          shirt_type: data.shirt_type,
          price: data.price,
+         price_id: data.price_id,
       }
    })
    
@@ -179,4 +181,3 @@ export async function subtractFromCart(itemId: number) {
 
    revalidatePath('/store/cart')
 }
-

@@ -5,6 +5,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import UploadShirtForm from '@/components/UploadShirtForm'
+import UploadExample from '@/components/UploadExample'
 
 //import { uploadShirt } from '@/actions/actions'
 

@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-import { stripe } from '../../lib/stripe'
+import stripe from '../../lib/stripe'
 
 export default async function Success({ searchParams }) {
    const { session_id } = await searchParams
@@ -21,12 +21,11 @@ export default async function Success({ searchParams }) {
 
    if (status === 'complete') {
       return (
-      <section id="success">
+      <section id="success" className='flex flex-col items-center justify-center h-screen'>
          <p>
-            We appreciate your business! A confirmation email will be sent to{' '}
-            {customerEmail}. If you have any questions, please email{' '}
+            We appreciate your business! 
          </p>
-         <a href="mailto:orders@example.com">orders@example.com</a>.
+         <div>company@example.com</div>
       </section>
       )
    }

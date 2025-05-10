@@ -39,12 +39,14 @@ export default function StoreItems({ data } : any) {
             <div key={index} className="flex items-center justify-around w-full bg-gray-300 p-8 rounded-4xl shadow-lg">
                {shirt.design_url === "" ? 
                   <div>No Image Available</div> : 
-                  <Image src={shirt.design_url} alt="Shirt Logo" width={256} height={256} className="rounded-lg shadow-lg mb-4" />
+                  <Image src={shirt.design_url} alt="Shirt Logo" width={128} height={128} className="rounded-lg shadow-lg" />
                }
-               <div className="flex flex-col">
-                  <h2 className="text-lg font-bold mb-2">{shirt.name}</h2>
-                  <p className="text-gray-700 mb-2">{shirt.price}</p>
-                  <p className="text-gray-700 mb-2">By William</p>
+               <div className="flex flex-col ml-4 mr-4">
+                  <h2 className="text-lg font-bold">{shirt.name}</h2>
+                  <p className="text-gray-700">${shirt.price}</p>
+                  <p className="text-gray-700">{shirt.style_type}</p>
+                  <p className="text-gray-700">{shirt.shirt_type}</p>
+                  <p className="text-gray-700">By Someone</p>
                </div>
                <div className="text-4xl">😉</div>
                <button onClick={() => handleAddToCart(shirt.id)} className="bg-green-400 hover:bg-green-600 hover:cursor-pointer select-none text-4xl w-16 h-16 rounded-4xl">+</button>
