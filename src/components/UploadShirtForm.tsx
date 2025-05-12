@@ -16,7 +16,7 @@ import { uploadShirt } from '@/actions/actions'
 
 export default function UploadShirtForm() {
    const [shirtName, setShirtName] = useState("")
-   const [shirtPrice, setShirtPrice] = useState(0)
+   const [shirtPrice, setShirtPrice] = useState<number>(0)
    const [shirtType, setShirtType] = useState("")
    const [shirtStyle, setShirtStyle] = useState("")
    const [imageKitUrl, setImageKitUrl] = useState<string | undefined>(undefined)
@@ -111,12 +111,6 @@ export default function UploadShirtForm() {
       }
    }
 
-   useEffect(() => {
-      if (shirtPrice < 0) {
-         setShirtPrice(0)
-      }
-   }, [shirtPrice])
-
    const handleSubmit = async (formData: FormData) => {
       // ImageKit upload
       formData.set('design_url', imageKitUrl as string)
@@ -204,9 +198,10 @@ export default function UploadShirtForm() {
             type="number"
             name="price"
             placeholder="Shirt Price" 
-            value={shirtPrice} 
-            onChange={(e) => setShirtPrice(parseInt(e.target.value))} 
+            value={shirtPrice === 0 ? "" : shirtPrice} 
+            onChange={(e) => e.target.value ? setShirtPrice(Number(parseInt(e.target.value))) : setShirtPrice(0)} 
             className="p-2 w-full rounded-lg shadow-lg"
+            min="0"
          />
 
          {/* submit */}
